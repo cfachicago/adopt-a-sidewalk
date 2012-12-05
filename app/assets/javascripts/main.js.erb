@@ -6,12 +6,12 @@ $(function() {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     panControl: true,
     zoom: 12,
-    disableDoubleClickZoom: true,
-    keyboardShortcuts: false,
+    disableDoubleClickZoom: false,
+    keyboardShortcuts: true,
     panControl: false,
     rotateControl: false,
     scaleControl: false,
-    scrollwheel: false,
+    scrollwheel: true,
     streetViewControl: true,
     zoomControl: true
   };
@@ -37,31 +37,11 @@ $(function() {
     if (bDebug) console.info('dragged');
     refreshKML();
   });
-
-  if ($.browser.msie && parseInt($.browser.version, 10) === 7) {
-    // IE7; 
-  } else {
-    window.osw_widget = new OhSoWe.MapWidget({
-      version: "0.1",
-      partnerId: "snowflake",
-      container: "osw_widget",
-      miniWidgetStyle: 'noText', //'default' or 'noText'
-      onReady: function(widget) {
-        //set the initial bounds
-        widget.boundsChanged(map.getBounds().toUrlValue());
-        //set the google maps listener
-        google.maps.event.addListener(map, 'bounds_changed', function() {
-          //if (bDebug) console.debug('bounds_changed');
-          widget.boundsChanged(map.getBounds().toUrlValue());
-        });
-      }
-    }).render();  
-  }
   
   function refreshKML(auto_fetch_info) {
     var c = map.getCenter();
     if (bDebug) console.info("Rendering sidewalks of [%s, %s]", c.lat(), c.lng());
-    var url = 'http://167.165.233.18/sidewalks.kml?lat=' + c.lat() + '&lng=' + c.lng() + '&r=' + (new Date()).valueOf();
+    var url = 'http://<%= ENV["GMAPS_KML_ENDPOINT"] %>/sidewalks.kml?lat=' + c.lat() + '&lng=' + c.lng() + '&r=' + (new Date()).valueOf();
     if (bDebug) console.info(url);
 
     if (sidewalks_kml != undefined || sidewalks_kml != null)
@@ -533,19 +513,6 @@ $(function() {
     return false;
   });
   
-  $('#share_link').live('click', function() {
-    window.osw_widget.isMinimized(function(isMin) {
-        if (isMin) {
-          window.osw_widget.showDetails();
-        } else {
-          window.osw_widget.minimize();
-        }
-      }
-    );
-
-    return false;
-  });
-
   $('#refresh_link').live('click', function() {
     refreshKML();
     return false;

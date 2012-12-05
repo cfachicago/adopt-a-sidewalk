@@ -17,6 +17,7 @@ gem 'kaminari'
 gem 'omniauth-facebook'
 gem 'rest-client'
 gem 'browser'
+gem 'bigdecimal'
 
 platforms :jruby do
   gem 'jruby-openssl'
