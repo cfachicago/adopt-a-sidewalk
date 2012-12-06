@@ -19,7 +19,7 @@ You can see a running version of the application at
 
 1. Install PostgreSQL with the PostGIS extensions: e.g. `brew install postgis`
 2. Download the chicagosidewalks shape file from the City of Chicago Data Portal http://data.cityofchicago.org
-3. Convert the shapefile into PostGIS SQL: `shp2pgsql -s 3435:4326 -g the_geom -I chicagosidewalks.shp chicagosidewalks.sql`
+3. Convert the shapefile into PostGIS SQL: `shp2pgsql -s 3435:4326 -g the_geom -I chicagosidewalks.shp >chicagosidewalks.sql`
     * `-s 3435:4326` This converts the geospatial data from the EPSG:3435 (NAD83 / Illinois East) project to ESPG:4326 (WGS84, lat/long)
     * `-g the_geom` name the geocolumn `the_geom` to match what's in the Rails code
     * `-I` generate a spatial index on the geocolumn.
