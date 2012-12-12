@@ -14,6 +14,17 @@ You can see a running version of the application at
     git clone git://github.com/Chicago/adopt-a-sidewalk.git
     cd adopt-a-sidewalk
     bundle install
+    
+### Prerequisites
+
+* Git
+* PostgreSQL with PostGIS extensions enabled
+    * Requires geos, gdal and proj.4
+* Ruby 1.9.x
+* Rubygems
+* Bundler
+
+See [EC2 Setup](https://github.com/cfachicago/adopt-a-sidewalk/wiki/EC2-Setup) for a play-by-play setting up a fully-working Adopt-a-Sidewalk on EC2/Ubuntu 12.04.1 using Apache/passenger
 
 ### Setting up the database
 
