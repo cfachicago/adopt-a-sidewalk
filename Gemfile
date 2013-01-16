@@ -18,6 +18,8 @@ gem 'omniauth-facebook'
 gem 'rest-client'
 gem 'browser'
 gem 'bigdecimal'
+gem 'capistrano'
+gem 'rvm-capistrano'
 
 platforms :jruby do
   gem 'jruby-openssl'
