@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0'
+gem 'rails', '~> 3.1.10'
 
 gem 'arel'
 gem 'devise'
@@ -18,6 +18,8 @@ gem 'omniauth-facebook'
 gem 'rest-client'
 gem 'browser'
 gem 'bigdecimal'
+gem 'capistrano'
+gem 'rvm-capistrano'
 
 platforms :jruby do
   gem 'jruby-openssl'
